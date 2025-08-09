@@ -1,0 +1,33 @@
+.btn-light:not(:hover) { border-color: #bbb; }
+
+h1.display-1 { margin-right: 22.5px; max-height:100%; }
+.logo { height:60px; }
+.btn-info { padding-top :0px !important; padding-bottom :0px !important; }
+th.nb, td.nb { border-style:none; }
+th.np, td.np { padding:0px !important; }
+td > input { width:100%; }
+button > img { height: 16px; width: 16px; }
+button.add  { padding: 0.25rem; }
+.w4e { width: 4em; }
+.w12e { width: 12em; }
+.table { font-size: .6em }
+@media (min-width: 1600px) { .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { max-width: 1580px;} }
+@media (min-width: 780px) { .table { font-size: .8em; } }
+@media (min-width: 1120px) {
+    .table { font-size: 1em; }
+    img.logo { height:100px; }
+    button.btn-info:first-child { margin-right:8px; }
+    button.add  { padding: 0.25rem 1rem; }
+}
+.form-group { margin:4rem auto 0px auto; font-size:1.2em; }
+@media (max-width: 1120px) {
+    .form-control { font-size: 1rem; }
+    .col-sm-4 { width: 66%; }
+    .btn { font-size: 1em !important }
+    button.btn-info:first-child { margin-bottom:4px; }
+}
+.arizonia { font-family: Arizonia, cursive ; }
+@font-face {
+    font-family: Arizonia;
+    src: url(Arizonia-Regular.ttf);
+}
