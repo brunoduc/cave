@@ -1,5 +1,5 @@
 <?php session_start();
-const VERS = '0.4.0';
+const VERS = '0.4.1';
 ?>
 <!doctype html>
 <html lang="fr">

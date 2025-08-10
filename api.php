@@ -5,7 +5,7 @@ if (!is_dir($datas_dir)) {
     if (!mkdir($datas_dir, 0770)) { // Crée le répertoire avec permissions 0770.
         echo('Impossible de créer le dossier datas. Créez le manuellement, ou vérifiez les droits d\'écriture.');
     } else {
-        echo('Dossier créé avec succès');
+        echo('Dossier "datas" créé avec succès');
     }
 }
 
@@ -15,7 +15,10 @@ class MyCave extends SQLite3 {
         if (!file_exists($file)) {
             try {
                 touch ("./datas/cave.db");
+                $this->open("$file",SQLITE3_OPEN_READWRITE);
                 $cmd = "CREATE TABLE IF NOT EXISTS cave (id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL, region TEXT, annee DATE NOT NULL, producteur TEXT NOT NULL, origine TEXT, qte INTEGER NOT NULL)";
+                $this->exec("$cmd");
+                $this->close();
             } catch (Exception $e) {
                 echo "Impossible de créer la base de données (Droits ?): " . $e->getMessage();
             }
@@ -23,15 +26,14 @@ class MyCave extends SQLite3 {
         if (is_writable($file) and ((isset($_SESSION['connected']) AND $_SESSION['connected']))) {
 
             try {
-                $this->open('datas/cave.db',SQLITE3_OPEN_READWRITE);
-                if (isset($cmd)) { $this->exec("$cmd"); }
+                $this->open("$file",SQLITE3_OPEN_READWRITE);
                 // echo "Connecté à la base de données avec succès !";
             } catch (Exception $e) {
                 echo "Impossible de se connecter à la base de données : " . $e->getMessage();
             }
         } else {
             try {
-                $this->open('datas/cave.db',SQLITE3_OPEN_READONLY);
+                $this->open("$file",SQLITE3_OPEN_READONLY);
                 // echo "Connecté à la base de données (en lecture) avec succès !";
             } catch (Exception $e) {
                 echo "Impossible de se connecter à la base de données : " . $e->getMessage();
